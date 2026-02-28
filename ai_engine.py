@@ -8,10 +8,10 @@ def analyze_image(image_path, crop_type):
     # Blur detection
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     blur_score = cv2.Laplacian(gray, cv2.CV_64F).var()
-    
-    if blur_score < 10:
-        return {"error": "Image too blurry"}
-    
+    print("Blur Score:", blur_score)
+
+    if blur_score < 5:
+        return {"error": f"Image too blurry. Blur score: {blur_score}"}
     # Brightness
     brightness = np.mean(gray)
     
